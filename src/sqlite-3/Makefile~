@@ -1,0 +1,37 @@
+DEVICEOPTS	:= -mcpu=arm1136jf-s -mfpu=vfp -mfloat-abi=softfp
+
+PARCH		:=	armv6
+
+SQLITE_LIB	:=	libsqlite3.so
+
+PALM_PDK_ROOT	:=	/opt/PalmPDK
+
+PALM_PDK_INC	:= 	$(PALM_PDK_ROOT)/include
+
+CC		:=  	arm-none-linux-gnueabi-gcc
+
+CFLAGS		:=	-g $(DEVICEOPTS)
+
+SYSROOT		:=	$(PALM_PDK_ROOT)/arm-gcc/sysroot
+
+LIBDIRS		:=	-L$(PALM_PDK_ROOT)/device/lib
+
+LDFLAGS		:=	-Wl,--allow-shlib-undefined -Wl,-rpath-link,$(PALM_PDK_ROOT) -Wl,-rpath,.
+
+LIBS		:= -lpthread -ldl
+
+OBJECTS		:= sqlite3.o
+
+#$(SQLITE_LIB): $(OBJECTS)
+#	$(CC) $(CFLAGS) $(LIBDIRS) $(LDFLAGS) $(LIBS) -static $(OBJECTS) -o $(SQLITE_LIB)
+
+sqlite3.o: sqlite3.c
+	$(CC) $(CFLAGS) $(INCLUDES) --sysroot=$(SYSROOT) -c $< -o $@
+
+clean:
+	rm *.o $(SQLITE_LIB)
+
+#$(AR) r libsqlite3.a *.o
+#$(STRIP) libsqlite3.a --strip-all 
+#$(GCC) -o libsqlite3.so -shared -static *.c
+#$(STRIP) libsqlite3.so --strip-all

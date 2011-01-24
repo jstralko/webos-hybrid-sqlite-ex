@@ -1,0 +1,11 @@
+{
+	"id": "org.webos-internals.db",
+	"version": "1.5.0",
+	"vendor": "webos internals",
+	"type": "web",
+	"main": "index.html",
+	"title": "Database",
+	"icon": "icon.png",
+	"window": "true",
+	"plug-ins" : true
+}
