@@ -1,1 +1,4 @@
 *~
+*.o
+db
+org.webos-internals.db*

@@ -1,6 +1,6 @@
 {
 	"id": "org.webos-internals.db",
-	"version": "1.5.0",
+	"version": "1.0.0",
 	"vendor": "webos internals",
 	"type": "web",
 	"main": "index.html",
